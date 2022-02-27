@@ -3,7 +3,7 @@ const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
 const bodyParser = require('body-parser')
-const fileUpload = require('express-fileupload');
+// const fileUpload = require('express-fileupload');
 // const FileType = require('file-type');
 
 app.use(cors());
@@ -25,12 +25,12 @@ db.connect(function (err) {
 })
 
 app.post("/create", (req, res) => {
-    const photo = req.body.photo;
+    const nickname = req.body.nickname;
     const caption = req.body.caption;
 
     db.query(
-        "INSERT INTO posttable (photo, caption) VALUES (?,?)",
-        [photo, caption],
+        "INSERT INTO posttable (nickname, caption) VALUES (?,?)",
+        [nickname, caption],
         (err, result) => {
             if (err) {
                 console.log(err);
@@ -66,7 +66,6 @@ app.get("/posts", (req, res) => {
 //         }
 //     );
 // });
-
 
 app.delete("/delete/:id", (req, res) => {
     const id = req.params.id;
