@@ -28,6 +28,7 @@ app.post("/create", (req, res) => {
     const nickname = req.body.nickname;
     const caption = req.body.caption;
 
+
     db.query(
         "INSERT INTO posttable (nickname, caption) VALUES (?,?)",
         [nickname, caption],
